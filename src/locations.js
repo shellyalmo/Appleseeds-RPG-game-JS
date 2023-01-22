@@ -11,7 +11,9 @@ const locationDesc = ["Scary", "Dark", "Evil", "Magical", "Horrific"];
  * generate random locations based on given names and descriptions
  * @param {Array} names
  * @param {Array} descriptions
+ *
  */
+
 function locationsGenerator(names, descriptions) {
   let locations = [];
   for (let i = 0; i < names.length; i++) {
