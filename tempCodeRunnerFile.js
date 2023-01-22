@@ -1,0 +1,1 @@
+ocationsContracts(contracts, monstersInEachLoc

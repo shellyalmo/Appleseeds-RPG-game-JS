@@ -45,22 +45,39 @@ goToLocation(finalLocations[0]);
 // console.log(playerLocation);
 
 // mapLocationMonsters - create multiple monsters, and attach them to every location. returns an object with locations as keys and array of monsters in each location.
-// temporary monsters array. TODO: replace with a function that creates monsters
-const monsters = [
+/**
+ * generate monster
+ */
+function monsterGenerator(namesArray) {
+  let monsterObj = {};
+  monsterObj.monsterName =
+    namesArray[Math.floor(Math.random() * namesArray.length)];
+  monsterObj.strength = Math.round(Math.random() * (100 - 1) + 1);
+  monsterObj.defense = Math.round(Math.random() * (100 - 1) + 1);
+  monsterObj.level = Math.round(Math.random() * (50 - 1) + 1);
+  monsterObj.healthPoints = Math.round(Math.random() * (100 - 1) + 1);
+  monsterObj.XPReward = Math.round(Math.random() * (1000 - 1) + 1);
+  monsterObj.dexterity = Math.round(Math.random() * (10 - 1) + 1);
+  return monsterObj;
+}
+const monsterNames = [
   "Beast",
   "StinkyFish",
   "BadBeast",
   "SlayerVampire",
   "Smoketaur",
   "Gloomlich",
-  "Poisonstep",
-  "Stenchpaw",
-  "The Insidious Critter",
-  "The Delirious Ooze",
-  "The Electric Gnoll",
-  "The Amphibian Venom Elephant",
-  "The Tattooed Dread Tiger",
-  "The Furry Storm Critter",
+];
+let monsters = [];
+for (let name of monsterNames) {
+  monsters.push(monsterGenerator(monsterNames));
+}
+console.log(monsters);
+
+const contracts = [
+  { monsterName: "Smoketaur", XP: 500, gold: 200 },
+  { monsterName: "Gloomlich", XP: 700, gold: 400 },
+  { monsterName: "SlayerVampire", XP: 800, gold: 500 },
 ];
 
 function mapLocationMonsters(monsters, locations) {
@@ -74,3 +91,20 @@ function mapLocationMonsters(monsters, locations) {
   return monstersPerLocation;
 }
 let monstersInEachLocation = mapLocationMonsters(monsters, finalLocations);
+// console.log(monstersInEachLocation);
+
+// TODO
+/**
+ * match monster name in contract to monster name in location, then return location:[contracts]
+ */
+// function listLocationsContracts(contractsArray, monstersInEachLocationArray) {
+//   const contractMonsterNames = contractsArray.map((obj) => {
+//     return obj.monsterName;
+//   });
+//   return contractMonsterNames;
+//   monstersInEachLocationArray.forEach(element => {
+
+//   });
+// }
+
+// console.log(listLocationsContracts(contracts, monstersInEachLocation));
