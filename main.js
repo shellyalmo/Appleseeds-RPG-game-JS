@@ -23,7 +23,7 @@ function locationsGenerator(names, descriptions) {
   return locations;
 }
 
-const finalLocations = locationsGenerator(locationNames, locationDesc);
+let finalLocations = locationsGenerator(locationNames, locationDesc);
 
 /**
  * print final locations
@@ -31,3 +31,28 @@ const finalLocations = locationsGenerator(locationNames, locationDesc);
 function listLocations(finalLocationsArray) {
   console.log(finalLocationsArray);
 }
+
+/**
+ * set user's current location
+ * @param {string} location
+ */
+function goToLocation(location) {
+  playerLocation = location;
+}
+//inside a location you can fight only the monsters inside this location.
+let playerLocation = "";
+goToLocation(finalLocations[0]);
+// console.log(playerLocation);
+
+// mapLocationMonsters - create multiple monsters, and attach them to every location. returns an object with locations as keys and array of monsters in each location.
+// temporary monsters array. TODO: replace with a function that creates monsters
+const monsters = ["Beast", "StinkyFish", "BadBeast", "SlayerVampire"];
+
+function mapLocationMonsters(monsters, locations) {
+  let monstersPerLocation = {};
+  locations.forEach((location) => {
+    monstersPerLocation[location] = monsters;
+  });
+  return monstersPerLocation;
+}
+console.log(mapLocationMonsters(monsters, finalLocations));
