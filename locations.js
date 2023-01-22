@@ -25,6 +25,7 @@ function locationsGenerator(names, descriptions) {
 
 let finalLocations = locationsGenerator(locationNames, locationDesc);
 
+console.log(finalLocations);
 /**
  * print final locations
  */
