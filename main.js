@@ -8,19 +8,26 @@ const locationNames = [
 
 const locationDesc = ["Scary", "Dark", "Evil", "Magical", "Horrific"];
 /**
- *
+ * generate random locations based on given names and descriptions
  * @param {Array} names
  * @param {Array} descriptions
  */
 function locationsGenerator(names, descriptions) {
-  let finalLocations = [];
+  let locations = [];
   for (let i = 0; i < names.length; i++) {
     let randomName = names[Math.floor(Math.random() * names.length)];
     let randomDesc =
       descriptions[Math.floor(Math.random() * descriptions.length)];
-    finalLocations.push(randomDesc + " " + randomName);
+    locations.push(randomDesc + " " + randomName);
   }
-  return finalLocations;
+  return locations;
 }
 
-console.log(locationsGenerator(locationNames, locationDesc));
+const finalLocations = locationsGenerator(locationNames, locationDesc);
+
+/**
+ * print final locations
+ */
+function listLocations(finalLocationsArray) {
+  console.log(finalLocationsArray);
+}
