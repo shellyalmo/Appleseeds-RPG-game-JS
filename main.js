@@ -46,13 +46,31 @@ goToLocation(finalLocations[0]);
 
 // mapLocationMonsters - create multiple monsters, and attach them to every location. returns an object with locations as keys and array of monsters in each location.
 // temporary monsters array. TODO: replace with a function that creates monsters
-const monsters = ["Beast", "StinkyFish", "BadBeast", "SlayerVampire"];
+const monsters = [
+  "Beast",
+  "StinkyFish",
+  "BadBeast",
+  "SlayerVampire",
+  "Smoketaur",
+  "Gloomlich",
+  "Poisonstep",
+  "Stenchpaw",
+  "The Insidious Critter",
+  "The Delirious Ooze",
+  "The Electric Gnoll",
+  "The Amphibian Venom Elephant",
+  "The Tattooed Dread Tiger",
+  "The Furry Storm Critter",
+];
 
 function mapLocationMonsters(monsters, locations) {
   let monstersPerLocation = {};
   locations.forEach((location) => {
-    monstersPerLocation[location] = monsters;
+    const n = Math.random() * (10 - 5) + 5; // number of elements we want to get
+    const shuffledArray = monsters.sort(() => 0.5 - Math.random()); // shuffles array
+    const result = shuffledArray.slice(0, n); // gets first n elements after shuffle
+    monstersPerLocation[location] = result;
   });
   return monstersPerLocation;
 }
-console.log(mapLocationMonsters(monsters, finalLocations));
+let monstersInEachLocation = mapLocationMonsters(monsters, finalLocations);
